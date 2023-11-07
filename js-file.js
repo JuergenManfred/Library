@@ -38,8 +38,10 @@ function displayBooks() {
         bookNumberOfPages.textContent = `Pages: ${book.numberOfPages}`
         
         const bookRead = document.createElement('h4')
-        bookRead.textContent = `${book.read ? "Yes" : "No"}`
+        bookRead.textContent = `Did you read it? ${book.read ? "Yes" : "No"}`
       
+
+
         bookContainer.appendChild(bookTitle);
         bookContainer.appendChild(bookAuthor);
         bookContainer.appendChild(bookNumberOfPages);
@@ -74,8 +76,9 @@ function newBookButtonClickHandler() {
     inputRead.type = "checkbox";
     inputRead.textContent = "Read?";
     
-    const inputSubmit = document.createElement("submit");
+    const inputSubmit = document.createElement("button");
     inputSubmit.type = "submit";
+    inputSubmit.textContent = "Submit"
     
     
     newBookForm.appendChild(inputTitle)
@@ -84,15 +87,26 @@ function newBookButtonClickHandler() {
     newBookForm.appendChild(inputRead)
     newBookForm.appendChild(inputSubmit)
     
-
-
-
     div2.appendChild(newBookForm);
 
+    inputSubmit.addEventListener("click", (e)=> {
+        e.preventDefault();
+    
+        const title = inputTitle.value;
+        const author = inputAuthor.value;
+        const numberOfPages = inputNumberOfPages.value;
+        const read = inputRead.checked;
 
+        const newBook = new Book(author, title, numberOfPages, read);
 
+        addBookToLibrary(newBook);
+
+        newBookForm.reset();
+
+        displayBooks();
+    })
+    
 }
-
 
 
 
