@@ -62,31 +62,47 @@ function newBookButtonClickHandler() {
     const newBookForm = document.createElement("form");
     newBookForm.classList = "newBookForm";
 
+    const labelTitel = document.createElement("label");
+    labelTitel.textContent = "Title:";
+
     const inputTitle = document.createElement("input");
     inputTitle.type = "text";
-    inputTitle.textContent = "Title:";
+    inputTitle.placeholder = "insert Title";
     
+    const labelAuthor = document.createElement("label");
+    labelAuthor.textContent = "Author:"
     const inputAuthor = document.createElement("input");
     inputAuthor.type = "text";
-    inputAuthor.textContent = "Author:";
+    inputAuthor.placeholder = "insert Author";
 
+    const labelPages = document.createElement("label")
+    labelPages.textContent = "Number of Pages:"
     const inputNumberOfPages = document.createElement("input");
     inputNumberOfPages.type = "number";
-    inputNumberOfPages.textContent = "Number of Pages:";
 
+    const labelRead = document.createElement("label");
+    labelRead.textContent = "Read"
     const inputRead = document.createElement("input");
     inputRead.type = "checkbox";
-    inputRead.textContent = "Read?";
     
     const inputSubmit = document.createElement("button");
     inputSubmit.type = "submit";
     inputSubmit.textContent = "Submit"
     
     
-    newBookForm.appendChild(inputTitle)
-    newBookForm.appendChild(inputAuthor)
-    newBookForm.appendChild(inputNumberOfPages)
-    newBookForm.appendChild(inputRead)
+    labelTitel.appendChild(inputTitle)
+    newBookForm.appendChild(labelTitel)
+
+    labelAuthor.appendChild(inputAuthor)
+    newBookForm.appendChild(labelAuthor)
+
+
+    labelPages.appendChild(inputNumberOfPages)
+    newBookForm.appendChild(labelPages)
+
+    labelRead.appendChild(inputRead)
+    newBookForm.appendChild(labelRead)
+
     newBookForm.appendChild(inputSubmit)
     
     newBookDialog.appendChild(newBookForm);
