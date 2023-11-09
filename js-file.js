@@ -11,6 +11,7 @@ function Book(author, title, numberOfPages, read) {
 function addBookToLibrary(book) {
     myLibrary.push(book)
 }
+const newBookDialog = document.querySelector("#newBookDialog");
 const bookList = document.createElement('div');
 bookList.className = "book-list"
 const div2 = document.querySelector('div')
@@ -57,6 +58,7 @@ div2.appendChild(newBookButton)
 newBookButton.addEventListener("click", newBookButtonClickHandler)
 
 function newBookButtonClickHandler() {
+    newBookDialog.showModal();
     const newBookForm = document.createElement("form");
     newBookForm.classList = "newBookForm";
 
@@ -87,7 +89,7 @@ function newBookButtonClickHandler() {
     newBookForm.appendChild(inputRead)
     newBookForm.appendChild(inputSubmit)
     
-    div2.appendChild(newBookForm);
+    newBookDialog.appendChild(newBookForm);
 
     inputSubmit.addEventListener("click", (e)=> {
         e.preventDefault();
