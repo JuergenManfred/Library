@@ -81,13 +81,16 @@ function newBookButtonClickHandler() {
     inputNumberOfPages.type = "number";
 
     const labelRead = document.createElement("label");
-    labelRead.textContent = "Read"
+    labelRead.textContent = "Have you read it?"
     const inputRead = document.createElement("input");
     inputRead.type = "checkbox";
     
     const inputSubmit = document.createElement("button");
     inputSubmit.type = "submit";
     inputSubmit.textContent = "Submit"
+
+    const inputCancle = document.createElement("button")
+    inputCancle.type = ""
     
     
     labelTitel.appendChild(inputTitle)
@@ -120,17 +123,11 @@ function newBookButtonClickHandler() {
         addBookToLibrary(newBook);
 
         newBookForm.reset();
-
         displayBooks();
+        newBookDialog.close();
     })
     
 }
 
-
-
-
-const newBook = new Book("Author Name", "Book Title", 300, false);
-addBookToLibrary(newBook);
-addBookToLibrary(newBook);
 
 displayBooks();
