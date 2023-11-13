@@ -1,133 +1,140 @@
-
 const myLibrary = [];
 
 function Book(author, title, numberOfPages, read) {
-    this.author = author;
-    this.title = title;
-    this.numberOfPages = numberOfPages;
-    this.read = read;
-
+  this.author = author;
+  this.title = title;
+  this.numberOfPages = numberOfPages;
+  this.read = read;
 }
 function addBookToLibrary(book) {
-    myLibrary.push(book)
+  myLibrary.push(book);
 }
 const newBookDialog = document.querySelector("#newBookDialog");
-const bookList = document.createElement('div');
-bookList.className = "book-list"
-const div2 = document.querySelector('div')
-div2.appendChild(bookList)
+const bookList = document.createElement("div");
+bookList.className = "book-list";
+const div2 = document.querySelector("div");
+div2.appendChild(bookList);
 function displayBooks() {
-    
+  // Clear the existing content
+  bookList.innerHTML = "";
 
-    // Clear the existing content
-    bookList.innerHTML = '';
+  // Loop through the array of books
+  myLibrary.forEach((book) => {
+    // Create a container for each book
+    const bookContainer = document.createElement("div");
+    bookContainer.classList.add("book-card");
 
-    // Loop through the array of books
-    myLibrary.forEach(book => {
+    const bookTitle = document.createElement("h3");
+    bookTitle.textContent = book.title;
 
-        // Create a container for each book
-        const bookContainer = document.createElement('div');
-        bookContainer.classList.add('book-card');
-        
-        const bookTitle = document.createElement('h3')
-        bookTitle.textContent = book.title
-        
-        const bookAuthor = document.createElement('h2')
-        bookAuthor.textContent = `Author: ${book.author}`
-        
-        const bookNumberOfPages = document.createElement('p')
-        bookNumberOfPages.textContent = `Pages: ${book.numberOfPages}`
-        
-        const bookRead = document.createElement('h4')
-        bookRead.textContent = `Did you read it? ${book.read ? "Yes" : "No"}`
-      
+    const bookAuthor = document.createElement("h2");
+    bookAuthor.textContent = `Author: ${book.author}`;
 
+    const bookNumberOfPages = document.createElement("p");
+    bookNumberOfPages.textContent = `Pages: ${book.numberOfPages}`;
 
-        bookContainer.appendChild(bookTitle);
-        bookContainer.appendChild(bookAuthor);
-        bookContainer.appendChild(bookNumberOfPages);
-        bookContainer.appendChild(bookRead);
+    const bookRead = document.createElement("h4");
+    bookRead.textContent = `Did you read it? ${book.read ? "Yes" : "No"}`;
 
-        bookList.appendChild(bookContainer);
-    })
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "Delete";
+    removeBtn.addEventListener("click", () => {
+      myLibrary.splice(myLibrary.indexOf(book), 1);
+      displayBooks();
+    });
+    const readButton = document.createElement("button");
+    readButton.textContent = "Read";
+    readButton.addEventListener("click", () => {
+      book.read = !book.read;
+      displayBooks();
+    });
+    bookContainer.appendChild(bookTitle);
+    bookContainer.appendChild(bookAuthor);
+    bookContainer.appendChild(bookNumberOfPages);
+    bookContainer.appendChild(bookRead);
+    bookContainer.appendChild(removeBtn);
+    bookContainer.appendChild(readButton);
+    bookList.appendChild(bookContainer);
+  });
 }
 const newBookButton = document.createElement("button");
 newBookButton.classList = "newBookButton";
 newBookButton.textContent = "NEW BOOK";
-div2.appendChild(newBookButton)
-newBookButton.addEventListener("click", newBookButtonClickHandler)
+div2.appendChild(newBookButton);
+newBookButton.addEventListener("click", newBookButtonClickHandler);
 
 function newBookButtonClickHandler() {
-    newBookDialog.showModal();
-    const newBookForm = document.createElement("form");
-    newBookForm.classList = "newBookForm";
+  newBookDialog.showModal();
+  const newBookForm = document.createElement("form");
+  newBookForm.classList = "newBookForm";
 
-    const labelTitel = document.createElement("label");
-    labelTitel.textContent = "Title:";
+  const labelTitle = document.createElement("label");
+  labelTitle.textContent = "Title:";
 
-    const inputTitle = document.createElement("input");
-    inputTitle.type = "text";
-    inputTitle.placeholder = "insert Title";
-    
-    const labelAuthor = document.createElement("label");
-    labelAuthor.textContent = "Author:"
-    const inputAuthor = document.createElement("input");
-    inputAuthor.type = "text";
-    inputAuthor.placeholder = "insert Author";
+  const inputTitle = document.createElement("input");
+  inputTitle.type = "text";
+  inputTitle.placeholder = "insert Title";
 
-    const labelPages = document.createElement("label")
-    labelPages.textContent = "Number of Pages:"
-    const inputNumberOfPages = document.createElement("input");
-    inputNumberOfPages.type = "number";
+  const labelAuthor = document.createElement("label");
+  labelAuthor.textContent = "Author:";
+  const inputAuthor = document.createElement("input");
+  inputAuthor.type = "text";
+  inputAuthor.placeholder = "insert Author";
 
-    const labelRead = document.createElement("label");
-    labelRead.textContent = "Have you read it?"
-    const inputRead = document.createElement("input");
-    inputRead.type = "checkbox";
-    
-    const inputSubmit = document.createElement("button");
-    inputSubmit.type = "submit";
-    inputSubmit.textContent = "Submit"
+  const labelPages = document.createElement("label");
+  labelPages.textContent = "Number of Pages:";
+  const inputNumberOfPages = document.createElement("input");
+  inputNumberOfPages.type = "number";
 
-    const inputCancle = document.createElement("button")
-    inputCancle.type = ""
-    
-    
-    labelTitel.appendChild(inputTitle)
-    newBookForm.appendChild(labelTitel)
+  const labelRead = document.createElement("label");
+  labelRead.textContent = "Have you read it?";
+  const inputRead = document.createElement("input");
+  inputRead.type = "checkbox";
 
-    labelAuthor.appendChild(inputAuthor)
-    newBookForm.appendChild(labelAuthor)
+  const inputSubmit = document.createElement("button");
+  inputSubmit.type = "submit";
+  inputSubmit.textContent = "Submit";
 
+  const inputCancelBtn = document.createElement("button");
+  inputCancelBtn.textContent = "X";
+  inputCancelBtn.addEventListener("click", () => {
+    newBookDialog.close()
+    newBookDialog.textContent = "";
+  })
 
-    labelPages.appendChild(inputNumberOfPages)
-    newBookForm.appendChild(labelPages)
+  labelTitle.appendChild(inputTitle);
+  newBookForm.appendChild(labelTitle);
 
-    labelRead.appendChild(inputRead)
-    newBookForm.appendChild(labelRead)
+  labelAuthor.appendChild(inputAuthor);
+  newBookForm.appendChild(labelAuthor);
 
-    newBookForm.appendChild(inputSubmit)
-    
-    newBookDialog.appendChild(newBookForm);
+  labelPages.appendChild(inputNumberOfPages);
+  newBookForm.appendChild(labelPages);
 
-    inputSubmit.addEventListener("click", (e)=> {
-        e.preventDefault();
-    
-        const title = inputTitle.value;
-        const author = inputAuthor.value;
-        const numberOfPages = inputNumberOfPages.value;
-        const read = inputRead.checked;
+  labelRead.appendChild(inputRead);
+  newBookForm.appendChild(labelRead);
 
-        const newBook = new Book(author, title, numberOfPages, read);
+  newBookForm.appendChild(inputSubmit);
+  newBookDialog.appendChild(newBookForm);
 
-        addBookToLibrary(newBook);
+  newBookDialog.appendChild(inputCancelBtn)
+  inputSubmit.addEventListener("click", (e) => {
+    e.preventDefault();
 
-        newBookForm.reset();
-        displayBooks();
-        newBookDialog.close();
-    })
-    
+    const title = inputTitle.value;
+    const author = inputAuthor.value;
+    const numberOfPages = inputNumberOfPages.value;
+    const read = inputRead.checked;
+
+    const newBook = new Book(author, title, numberOfPages, read);
+
+    addBookToLibrary(newBook);
+
+    newBookForm.reset();
+    displayBooks();
+    newBookDialog.textContent = "";
+    newBookDialog.close();
+  });
 }
-
 
 displayBooks();
