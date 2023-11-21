@@ -100,9 +100,9 @@ function newBookButtonClickHandler() {
   const inputCancelBtn = document.createElement("button");
   inputCancelBtn.textContent = "X";
   inputCancelBtn.addEventListener("click", () => {
-    newBookDialog.close()
+    newBookDialog.close();
     newBookDialog.textContent = "";
-  })
+  });
 
   labelTitle.appendChild(inputTitle);
   newBookForm.appendChild(labelTitle);
@@ -119,7 +119,7 @@ function newBookButtonClickHandler() {
   newBookForm.appendChild(inputSubmit);
   newBookDialog.appendChild(newBookForm);
 
-  newBookDialog.appendChild(inputCancelBtn)
+  newBookDialog.appendChild(inputCancelBtn);
   inputSubmit.addEventListener("click", (e) => {
     e.preventDefault();
 
