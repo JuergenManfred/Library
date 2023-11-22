@@ -1,4 +1,4 @@
-# git_test
+# Library
 
 My first GitHub repo!
 Hello Odin!
