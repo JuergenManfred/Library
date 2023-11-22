@@ -14,8 +14,9 @@ function addBookToLibrary(book) {
 const newBookDialog = document.querySelector("#newBookDialog");
 const bookList = document.createElement("div");
 bookList.className = "book-list";
-const div2 = document.querySelector("div");
-div2.appendChild(bookList);
+const containerDiv = document.querySelector("div");
+containerDiv.classList = "container-div"
+containerDiv.appendChild(bookList);
 function displayBooks() {
   // Clear the existing content
   bookList.innerHTML = "";
@@ -27,25 +28,31 @@ function displayBooks() {
     bookContainer.classList.add("book-card");
 
     const bookTitle = document.createElement("h3");
+    bookTitle.classList = "title"
     bookTitle.textContent = book.title;
 
     const bookAuthor = document.createElement("h2");
+    bookAuthor.classList = "author"
     bookAuthor.textContent = `Author: ${book.author}`;
 
     const bookNumberOfPages = document.createElement("p");
+    bookNumberOfPages.classList = "pages"
     bookNumberOfPages.textContent = `Pages: ${book.numberOfPages}`;
 
     const bookRead = document.createElement("h4");
+    bookRead.classList = "read"
     bookRead.textContent = `Did you read it? ${book.read ? "Yes" : "No"}`;
 
     const removeBtn = document.createElement("button");
     removeBtn.textContent = "Delete";
+    removeBtn.classList = "delete-btn"
     removeBtn.addEventListener("click", () => {
       myLibrary.splice(myLibrary.indexOf(book), 1);
       displayBooks();
     });
     const readButton = document.createElement("button");
     readButton.textContent = "Read";
+    readButton.classList = "read-button"
     readButton.addEventListener("click", () => {
       book.read = !book.read;
       displayBooks();
@@ -62,7 +69,7 @@ function displayBooks() {
 const newBookButton = document.createElement("button");
 newBookButton.classList = "newBookButton";
 newBookButton.textContent = "NEW BOOK";
-div2.appendChild(newBookButton);
+containerDiv.prepend(newBookButton);
 newBookButton.addEventListener("click", newBookButtonClickHandler);
 
 function newBookButtonClickHandler() {
@@ -96,30 +103,32 @@ function newBookButtonClickHandler() {
   const inputSubmit = document.createElement("button");
   inputSubmit.type = "submit";
   inputSubmit.textContent = "Submit";
+  inputSubmit.classList = "submit-btn";
 
   const inputCancelBtn = document.createElement("button");
   inputCancelBtn.textContent = "X";
+  inputCancelBtn.classList = "cancel-button"
   inputCancelBtn.addEventListener("click", () => {
     newBookDialog.close();
     newBookDialog.textContent = "";
   });
-
+  
   labelTitle.appendChild(inputTitle);
   newBookForm.appendChild(labelTitle);
-
+  
   labelAuthor.appendChild(inputAuthor);
   newBookForm.appendChild(labelAuthor);
-
+  
   labelPages.appendChild(inputNumberOfPages);
   newBookForm.appendChild(labelPages);
-
+  
   labelRead.appendChild(inputRead);
   newBookForm.appendChild(labelRead);
-
+  
   newBookForm.appendChild(inputSubmit);
   newBookDialog.appendChild(newBookForm);
-
-  newBookDialog.appendChild(inputCancelBtn);
+  
+  newBookDialog.prepend(inputCancelBtn);
   inputSubmit.addEventListener("click", (e) => {
     e.preventDefault();
 

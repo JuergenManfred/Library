@@ -1,0 +1,129 @@
+* {
+  background-color: whitesmoke;
+}
+
+.container-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.newBookButton {
+  background-color: rgb(209, 209, 209);
+  height: 6vh;
+  width: 25vw;
+  font-size: 1.5em;
+  margin: 1em;
+  border-radius: 7px;
+}
+
+.book-list {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.book-card {
+  background-color: rgb(233, 142, 82);
+  margin: 1em;
+  padding: 0.6em;
+  border: darkcyan 3px solid;
+  border-radius: 10px;
+}
+
+.title {
+  background-color: rgb(233, 142, 82);
+  font-size: 1.4em;
+  margin-bottom: 5%;
+}
+
+.author {
+  background-color: rgb(233, 142, 82);
+  font-size: 1em;
+  margin-bottom: 5%;
+}
+
+.pages {
+  background-color: rgb(233, 142, 82);
+  font-size: 1em;
+  margin-bottom: 5%;
+}
+
+.read {
+  background-color: rgb(233, 142, 82);
+  font-size: 1em;
+  margin-bottom: 5%;
+}
+
+.delete-btn {
+  font-size: 1.2em;
+  height: 2em;
+  width: 5em;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: solid 3px black;
+}
+
+.read-button {
+  font-size: 1.2em;
+  height: 2em;
+  width: 5em;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: solid 3px black;
+}
+
+.read-button:hover,
+.delete-btn:hover,
+.read-button:focus,
+.delete-btn:focus,
+.newBookButton:hover,
+.newBookButton:focus,
+.submit-btn:focus,
+.submit-btn:hover,
+.cancel-button:hover,
+.cancel-button:focus {
+  background-color: lightgreen;
+  cursor: pointer;
+}
+
+.newBookForm {
+  border: 5px solid black;
+  background-color: lightblue;
+  box-shadow: 3px 3px 10px rgba(0 0 0 / 0.5);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+#newBookDialog {
+  border: none;
+  background: none;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  background-color: lightblue;
+  display: flex;
+}
+
+input {
+  margin-left: auto;
+  background-color: lightblue;
+}
+
+.submit-btn {
+  background-color: rgb(209, 209, 209);
+}
+
+.cancel-button {
+  background-color: rgb(209, 209, 209);
+  border-radius: 10px;
+  border: 3px solid black;
+  align-self: flex-end;
+  width: 2em;
+}
