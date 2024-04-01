@@ -1,4 +1,2 @@
 # Library
-
-My first GitHub repo!
-Hello Odin!
+(https://codepen.io/EvErEsT-K/pen/poBdPWb)
